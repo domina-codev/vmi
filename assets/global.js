@@ -147,7 +147,7 @@ class QuantityInput extends HTMLElement {
     super();
     this.input = this.querySelector('input');
     this.changeEvent = new Event('change', { bubbles: true });
-
+console.log(55, this.input.value);
     this.input.addEventListener('change', this.onInputChange.bind(this));
     this.querySelectorAll('button').forEach(
       (button) => button.addEventListener('click', this.onButtonClick.bind(this))

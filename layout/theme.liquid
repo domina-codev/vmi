@@ -32,6 +32,9 @@
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'jquery-3.7.1.min.js' | asset_url }}"></script>
+    <script src="{{ 'slick.min.js' | asset_url }}"></script>
+    {{ 'slick.css' | asset_url | stylesheet_tag }}
     {{ content_for_header }}
 
     {%- liquid
