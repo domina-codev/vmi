@@ -1,0 +1,26 @@
+{% capture collectionTagHTML %}
+    {% assign collectionTAG = block.settings.collection %}
+
+    <label class="collection-tag__label" style="background-color: {{ block.settings.bg }}; color: {{ block.settings.font }};">
+    {%- for collection in product.collections -%}
+        {%- if collectionTAG == collection -%}
+            {{ block.settings.prefix }} {{ collection.title }}{{ block.settings.suffix }}
+        {%- endif -%}
+    {%- endfor -%}
+    </label>
+{% endcapture %}
+
+{% if block.settings.customer_only %}
+    {% if customer %}
+        {{ collectionTagHTML }}
+    {% endif %}
+{% else %}
+    {{ collectionTagHTML }}
+{% endif %}
+
+<style>
+    .collection-tag__label {
+        padding: 5px 20px;
+        border-radius: 20px;
+    }
+</style>

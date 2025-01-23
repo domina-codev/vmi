@@ -308,6 +308,8 @@
                 share_link: share_url
               %}
 
+            {%- when 'collection_tag' -%}
+              {% render 'collection-tagging', product: product, block: block %}
             {%- when 'variant_picker' -%}
               {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
             {%- when 'buy_buttons' -%}
@@ -718,6 +720,47 @@
           ],
           "default": "button",
           "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.label"
+        }
+      ]
+    },
+    {
+      "type": "collection_tag",
+      "name": "Collection tag",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "customer_only",
+          "label": "Customer only?",
+          "default": true
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "prefix",
+          "label": "Prefix",
+          "default": "This product is part of our"
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": "Suffix",
+          "default": "!"
+        },
+        {
+          "type": "color",
+          "id": "bg",
+          "label": "Background",
+          "default": "#c0455f"
+        },
+        {
+          "type": "color",
+          "id": "font",
+          "label": "Font",
+          "default": "#ffffff"
         }
       ]
     },

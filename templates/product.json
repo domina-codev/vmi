@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "sections": {
     "main": {
       "type": "main-product",
@@ -38,6 +38,17 @@
           "type": "price",
           "settings": {}
         },
+        "collection_tag_KD6Dmj": {
+          "type": "collection_tag",
+          "settings": {
+            "customer_only": true,
+            "collection": "on-sale",
+            "prefix": "This product is part of our",
+            "suffix": "!",
+            "bg": "#c0455f",
+            "font": "#ffffff"
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -63,6 +74,7 @@
         "variant_picker",
         "quantity_selector",
         "price",
+        "collection_tag_KD6Dmj",
         "buy_buttons",
         "description",
         "share"

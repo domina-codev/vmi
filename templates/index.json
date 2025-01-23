@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "sections": {
     "6a3bb789-ce10-45f5-ae67-e2063ef8c76b": {
       "type": "image-banner",
@@ -61,12 +61,12 @@
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "<strong>Featured products</strong>",
+        "title": "<strong>Mono products</strong>",
         "heading_size": "h1",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "automated-collection",
+        "collection": "mono",
         "products_to_show": 10,
         "columns_desktop": 3,
         "full_width": false,
