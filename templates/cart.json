@@ -7,13 +7,20 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "sections": {
     "cart-items": {
       "type": "main-cart-items",
       "settings": {
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "main_cart_upsell_V6gmwz": {
+      "type": "main-cart-upsell",
+      "settings": {
+        "collection": "upsell-cart",
+        "heading": ""
       }
     },
     "cart-footer": {
@@ -37,6 +44,7 @@
   },
   "order": [
     "cart-items",
+    "main_cart_upsell_V6gmwz",
     "cart-footer"
   ]
 }
