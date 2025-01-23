@@ -1,0 +1,83 @@
+{%- for item in cart.items -%}
+    {%- assign productIDs = cart.items | map: 'product_id' -%}
+{%- endfor -%}
+<section id="upsellCarousel" class="cart-upsell-container-{{ section.id }} cart-upsell-container page-width {% if cart.item_count < 2 %} hide {% endif %}">
+    {% assign collection = section.settings.collection %}
+    <ul class="upsell-carousel">
+    {%- for product in collection.products -%}
+        {%- unless productIDs contains product.id -%}
+            <li class="upsell__product">
+                <img src="{{ product.featured_image | image_url: width: "200x" }}" class="" alt="{{ product.featured_image.alt | escape }}" loading="lazy" width="150" height="auto">
+                <div class="upsell__product-details">
+                    <h5>{{ product.title }}</h5>
+                    <form method="post" action="/cart/add">
+                    <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                    <input type="hidden" id="quantity" name="quantity" value="1"/>
+                    <input type="submit" value="Add to cart" class="button" />
+                    </form>
+                </div>
+            </li>
+        {%- endunless -%}
+    {%- endfor -%}
+    </ul>
+</section>
+
+<style>
+    .slick_btn {
+        position: absolute;
+        top: 40%;
+        z-index: 9;
+        padding: 5px;
+        border-radius: 50px;
+        background-color: rgba(255,255,255, 0.4);
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+    }
+    .slick_btn.slick_btn--next {
+        right: 15px;
+    }
+    .slick_btn.slick_btn--prev {
+        left: 15px;
+    }
+    .slick_btn svg {
+        height: 30px;
+        width: 30px;
+    }
+    .cart-upsell-container.hide {
+        display: none;
+    }
+    .cart-upsell-container-{{ section.id }} .upsell__product {
+        display: flex;
+        gap: 15px;
+    }
+</style>
+
+<script>
+    $(document).ready(function(){
+        $('.upsell-carousel').slick({
+            nextArrow: '<div class="slick_btn slick_btn--next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg></div>',
+            prevArrow: '<div class="slick_btn slick_btn--prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg></div>',
+        });
+    });
+</script>
+
+{% schema %}
+    {
+      "name": "Cart Upsell",
+      "class": "cart-upsell",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Products to upsell"
+        }
+      ],
+      "presets": [
+        {
+            "name": "Cart Upsell"
+        }
+      ]
+    }
+    
+    {% endschema %}

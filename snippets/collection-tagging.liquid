@@ -1,13 +1,14 @@
 {% capture collectionTagHTML %}
     {% assign collectionTAG = block.settings.collection %}
 
-    <label class="collection-tag__label" style="background-color: {{ block.settings.bg }}; color: {{ block.settings.font }};">
     {%- for collection in product.collections -%}
         {%- if collectionTAG == collection -%}
+
+        <label class="collection-tag__label" style="background-color: {{ block.settings.bg }}; color: {{ block.settings.font }};">
             {{ block.settings.prefix }} {{ collection.title }}{{ block.settings.suffix }}
+        </label>
         {%- endif -%}
     {%- endfor -%}
-    </label>
 {% endcapture %}
 
 {% if block.settings.customer_only %}
